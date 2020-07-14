@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="top-container">
+      <div class="menu-container">
+        <div class="menu" id = "File">File</div>
+        <div class="menu" id = "Home">Home</div>
+      </div>
+      <div class="menu-option-container">
+        <div class="file-menu">
+          <div id="New">New</div>
+          <div id="Open">Open</div>
+          <div id="Save">Save</div>
+        </div>
+        <div class="home-menu">
+        <div class="menu-option-row">
+    <select id="font" name="font">
+    <option value="arial">Volvo</option>
+    <option value="sans-serif">Saab</option>
+    <option value="roboto">Fiat</option>
+    <option value="monospace">Audi</option>
+    <option value="fantasy">Audi</option>
+    <option value="cursive">Audi</option>
+  </select>
+  <select id="font-size">
+    <% for(let i=10;i<20;i++){%>
+    <option value="<%=i%>"><%=i%></option>
+    <%}%>
+  </select>
+        </div>
+        <div class="menu-option-row">
+          <div class="menu-option-group">
+            <button type="button" id="bold">B</button>
+            <button type="button" id="italic">I</button>
+            <button type="button" id="underline">U</button>
+
+          </div>
+        </div>
+        <div class="menu-option-row">
+          <div class="menu-option-group">
+            <input type="button" value="L" halign="left">
+            <input type="button" value="C" halign="center">
+            <input type="button" value="R" halign="right">
+          </div>
+          <input type="color" id="color" value="black">
+        </div>
+        </div>
+      </div>
+
+      <div class="formula-container">
+        formula
+        <input type="text" readonly="true" id="address-input">
+        <input type="text" id="formula-input">
+      </div>
+      <br>
+    </div>
+
+    <div class="content-container">
+      <div id="top-row-container">
+
+        <div id="top-left-cell"></div>
+
+        <div class="top-row" id="top-row">
+          <%for(let j=0;j<cols;j++){%>
+            <div class="side-cell">
+              <%= String.fromCharCode(j+65) %>
+            </div>
+            <%}%>
+        </div>
+
+      </div>
+
+      <div class="side-col">
+        <%for(let j=0;j<rows;j++){%>
+          <div class="side-cell">
+            <%= j+1 %>
+          </div>
+          <%}%>
+      </div>
+      <div class="grid">
+        <% for(let i=0;i<rows;i++){%>
+          <div class="col">
+            <%for(let j=0;j<cols;j++){%>
+
+              <div class="cell btn" contenteditable="true" rowId=<%=(i+1)%> colId=<%=(j+1)%>>
+                </div>
+              <%}%>
+          </div>
+        <%}%>
+      </div>
+    </div>
+
+  </body>
+</html>

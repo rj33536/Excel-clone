@@ -1,0 +1,121 @@
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+/****************************** Menu *****************************/
+.top-container{
+
+}
+.menu-container{
+  display: flex;
+  border: 1px green solid;
+}
+.menu-container>*{
+  width: 40px;
+  border: 1px green solid;
+  padding: 3px;
+}
+/**************************** Menu options **********************/
+.menu-option-container{
+  display: flex;
+  height: 50px;
+}
+.menu-option-row{
+  display: flex;
+
+}
+.selected-menu{
+  display: flex !important;
+}
+.isOn{
+  border: 2px solid black;
+}
+
+/************************* File menu ***************************/
+
+.file-menu{
+  display: none;
+}
+.file-menu>*{
+  margin: 0px;
+  padding: 15px;
+
+  border: 1px solid green;
+}
+
+
+/************************** Home menu ***************************/
+.home-menu{
+  display: none;
+
+}
+
+.home-menu>*{
+  height: 30px;
+}
+.menu-option-row>*{
+  height: inherit;
+  margin: 4px;
+}
+.menu-option-group>*{
+  height: inherit;
+  padding: 4px;
+
+}
+/***************************** Formula section ******************/
+#address-input{
+  max-width: 35px;
+}
+.formula-container{
+  border: 1px black solid;
+}
+
+
+/***************************** Side row col *********************/
+
+#top-row-container{
+  display: flex;
+  position: absolute;
+}
+#top-left-cell{
+  background-color: grey;
+  width: 75px;
+  height: 25px;
+  display: block;
+}
+.top-row {
+  background-color: lightgreen;
+  display: flex;
+}
+
+.side-col{
+  position: absolute;
+  display: block;
+}
+.side-cell{
+    border: 1px black solid;
+    width: 75px;
+    height: 25px;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+/******************************** Grid ********************************/
+.col{
+  display: flex;
+}
+
+.cell{
+  border:1px solid black;
+  min-width: 75px;
+  height: 25px;
+
+}
+.cell:focus{
+  outline: solid 2.3px black;
+
+}
+.grid{
+  left: 75px;
+}
