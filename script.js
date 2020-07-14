@@ -49,7 +49,13 @@ $("#New").on("click", function () {
     db.push(row);
   }
 })
+/*
+$(".grid .cell").on("keyup", function () {
+        let { rowId,colId } = getrc(this);
+        let ht = $(this).height();
+        $($(".side-col .cell")[rowId]).height(ht);
 
+    })*/
 $("#Open").on("click", async function () {
   let open =await dialog.showOpenDialog();
   let path = open.filePaths[0];
@@ -205,6 +211,10 @@ $("#font-size").on("change", function () {
       removeDownStream(rowId,colId);
     }
     db[rowId][colId].data = cellValue;
+    if(!parseInt(cellValue)){
+      return;
+    }
+
     updateDisplay(rowId, colId,cellValue);
     console.log(db[rowId][colId]);
     //update all other value related
@@ -234,7 +244,6 @@ $("#formula-input").on("blur",function () {
 
   function updateDisplay(rowId,colId,val) {
     let formula = db[rowId][colId].formula;
-    let prevData = db[rowId][colId].data;
     db[rowId][colId].data = val;
     let element = $(`[rowid=${rowId+1}][colid=${colId+1}]`)
     $(element).html(db[rowId][colId].data);
@@ -243,9 +252,6 @@ $("#formula-input").on("blur",function () {
       let c = db[rowId][colId].upStream[i].colId;
       let val = evaluate(db[r][c].formula);
       updateDisplay(r,c,val);
-    }
-    if(!val){
-      db[rowId][colId].data = prevData;
     }
   }
 

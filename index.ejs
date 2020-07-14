@@ -21,15 +21,15 @@
         <div class="home-menu">
         <div class="menu-option-row">
     <select id="font" name="font">
-    <option value="arial">Volvo</option>
-    <option value="sans-serif">Saab</option>
-    <option value="roboto">Fiat</option>
-    <option value="monospace">Audi</option>
-    <option value="fantasy">Audi</option>
-    <option value="cursive">Audi</option>
+    <option value="arial">arial</option>
+    <option value="sans-serif">sans-serif</option>
+    <option value="roboto">roboto</option>
+    <option value="monospace">monospace</option>
+    <option value="fantasy">fantasy</option>
+    <option value="cursive">cursive</option>
   </select>
   <select id="font-size">
-    <% for(let i=10;i<20;i++){%>
+    <% for(let i=10;i<50;i++){%>
     <option value="<%=i%>"><%=i%></option>
     <%}%>
   </select>
@@ -76,23 +76,25 @@
 
       </div>
 
-      <div class="side-col">
-        <%for(let j=0;j<rows;j++){%>
-          <div class="side-cell">
-            <%= j+1 %>
-          </div>
-          <%}%>
-      </div>
-      <div class="grid">
-        <% for(let i=0;i<rows;i++){%>
-          <div class="col">
-            <%for(let j=0;j<cols;j++){%>
+      <div class="side-col-and-grid">
+        <div class="side-col">
+          <%for(let j=0;j<rows;j++){%>
+            <div class="side-cell">
+              <%= j+1 %>
+            </div>
+            <%}%>
+        </div>
+        <div class="grid">
+          <% for(let i=0;i<rows;i++){%>
+            <div class="col">
+              <%for(let j=0;j<cols;j++){%>
 
-              <div class="cell btn" contenteditable="true" rowId=<%=(i+1)%> colId=<%=(j+1)%>>
-                </div>
-              <%}%>
-          </div>
-        <%}%>
+                <div class="cell btn" contenteditable="true" rowId=<%=(i+1)%> colId=<%=(j+1)%>>
+                  </div>
+                <%}%>
+            </div>
+          <%}%>
+        </div>
       </div>
     </div>
 

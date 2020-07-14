@@ -63,6 +63,9 @@
   padding: 4px;
 
 }
+#font-size{
+  overflow: scroll;
+}
 /***************************** Formula section ******************/
 #address-input{
   max-width: 35px;
@@ -81,11 +84,10 @@
 #top-left-cell{
   background-color: grey;
   width: 75px;
-  height: 25px;
+  height: 27px;
   display: block;
 }
 .top-row {
-  background-color: lightgreen;
   display: flex;
 }
 
@@ -98,7 +100,7 @@
     width: 75px;
     height: 25px;
     text-align: center;
-    background-color: lightgrey;
+    background-color: lightgreen;
 }
 
 /******************************** Grid ********************************/
@@ -116,6 +118,13 @@
   outline: solid 2.3px black;
 
 }
+.side-col-and-grid{
+  position: absolute;
+  display: block;
+  top:144px;
+}
 .grid{
   left: 75px;
+  position: absolute;
+
 }
