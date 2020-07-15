@@ -227,14 +227,17 @@ $("#formula-input").on("blur",function () {
     return ;
   }
   removeDownStream(rowId,colId);
+  db[rowId][colId].formula = formula;
+  setUpstreamAndDownStream(rowId,colId);
 
-  if(!checkFormulaValidity(formula)){
+  if(!checkFormulaValidity(rowId, colId)){
     alert("Formula Invalid");
+
+    removeDownStream(rowId,colId);
+    db[rowId][colId].formula = "";
     return ;
   }
 
-    db[rowId][colId].formula = formula;
-  setUpstreamAndDownStream(rowId,colId);
 
   let nVal = evaluate(formula);
 
@@ -255,7 +258,43 @@ $("#formula-input").on("blur",function () {
     }
   }
 
-  function checkFormulaValidity(formula) {
+  function checkFormulaValidity(rowId, colId) {
+    /* check for a self loop A1->A1+3 */
+    let issCellKaDownStream = db[rowId][colId].downStream;
+    for(let i=0;i<issCellKaDownStream.length;i++){
+      let downStreamObject = issCellKaDownStream[i];
+      let r = downStreamObject.rowId,c = downStreamObject.colId;
+      if(r==rowId && c==colId) return false;
+    }
+
+    let cell = db[rowId][colId];
+    let formula = cell.formula;
+    let stack = [];
+    let rows = $(".col").length;
+    let cols = $($(".col")[0]).find(".cell").length;
+    let visited = [];
+    for(let i=0;i<rows;i++){
+      let myrow = [];
+      for(let j=0;j<cols;j++)
+      myrow.push(false);
+      visited.push(myrow);
+    }
+
+    stack.push({rowId,colId});
+    while(stack.length>0){
+      let top = stack.pop();
+      let r = top.rowId,c = top.colId;
+      if(visited[r][c])
+      return false;
+      visited[r][c] = true;
+      let downStream = db[r][c].downStream;
+      for(let i=0;i<downStream.length;i++){
+        stack.push(db[r][c].downStream[i]);
+      }
+
+    }
+
+
     return true;
   }
 
