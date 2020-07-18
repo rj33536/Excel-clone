@@ -9,14 +9,17 @@ $(document).ready(function () {
   })
 
 $("#File").on("click",function () {
-
-    $(".file-menu").addClass("selected-menu");
-    $(".home-menu").removeClass("selected-menu");
+    $("#File").addClass("selected-menu");
+    $("#Home").removeClass("selected-menu");
+    $(".file-menu").addClass("selected-menu-container");
+    $(".home-menu").removeClass("selected-menu-container");
 
 })
 $("#Home").on("click",function () {
-  $(".home-menu").addClass("selected-menu");
-  $(".file-menu").removeClass("selected-menu");
+  $("#Home").addClass("selected-menu");
+  $("#File").removeClass("selected-menu");
+  $(".home-menu").addClass("selected-menu-container");
+  $(".file-menu").removeClass("selected-menu-container");
 })
 
 
@@ -222,6 +225,9 @@ $("#font-size").on("change", function () {
 
 $("#formula-input").on("blur",function () {
   let formula = $(this).val();
+  if(!lastClickedCell){
+    return;
+  }
   let {rowId,colId} = getrc(lastClickedCell);
   if(formula==db[rowId][colId].formula ){
     return ;
@@ -235,6 +241,7 @@ $("#formula-input").on("blur",function () {
 
     removeDownStream(rowId,colId);
     db[rowId][colId].formula = "";
+    $(this).val("");
     return ;
   }
 

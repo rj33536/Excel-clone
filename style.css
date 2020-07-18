@@ -9,7 +9,8 @@
 }
 .menu-container{
   display: flex;
-  border: 1px green solid;
+  background-color: green;
+  color: white;
 }
 .menu-container>*{
   width: 40px;
@@ -20,13 +21,20 @@
 .menu-option-container{
   display: flex;
   height: 50px;
+  background-color: lightgrey;
+  color: green;
 }
 .menu-option-row{
   display: flex;
 
 }
-.selected-menu{
+.selected-menu-container{
   display: flex !important;
+}
+.selected-menu{
+  background-color: lightgrey;
+  color: green;
+  border-bottom: none;
 }
 .isOn{
   border: 2px solid black;
@@ -40,8 +48,7 @@
 .file-menu>*{
   margin: 0px;
   padding: 15px;
-
-  border: 1px solid green;
+  border: 1px darkgrey double;
 }
 
 
@@ -80,6 +87,7 @@
 #top-row-container{
   display: flex;
   position: absolute;
+  color: white;
 }
 #top-left-cell{
   background-color: grey;
@@ -94,13 +102,14 @@
 .side-col{
   position: absolute;
   display: block;
+  color:white;
 }
 .side-cell{
-    border: 1px black solid;
+    border: 1px darkgreen solid;
     width: 75px;
     height: 25px;
     text-align: center;
-    background-color: lightgreen;
+    background-color: green;
 }
 
 /******************************** Grid ********************************/
